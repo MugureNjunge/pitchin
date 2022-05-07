@@ -2,4 +2,3 @@ virtual/
 .vscode/
 *pyc
 pycache/
-markdownfile/

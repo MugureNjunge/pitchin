@@ -35,7 +35,7 @@ def home():
 def about():
   return render_template("about.html", title = about) 
 
-@app.route("/signup")
+@app.route("/signup",methods=['GET', 'POST'] )
 def signup():
   form = SignupForm()
   return render_template("signup.html", title = 'Signup', form=form)   
