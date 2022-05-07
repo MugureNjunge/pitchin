@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h2>YOUR NUMBER ONE PITCH APP</h2>
-<h3>Categories</h3>
+<h1>Your number one pitch app, or pitches!</h1>
+<h2>Categories</h2>
 {%for post in posts%}
 
-  <h1>{{post.title}}</h1>
+  <h4>{{post.title}}</h4>
   <p>{{post.content}}</p>
 
 {%endfor%}
