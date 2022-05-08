@@ -5,7 +5,7 @@
     <form method="POST" action="">
       {{ form.hidden_tag() }}
       <fieldset class="form-group">
-        <legend class="border-bottom-mb-4">Join today</legend>
+        <legend class="border-bottom-mb-4">Sign up Today!</legend>
         <div class="form-group">
           {{ form.username.label(class="form-control-label")}}
 
@@ -15,8 +15,8 @@
               {% for error in form.username.errors %}
                 <span>{{ error }}</span>
               {% endfor %}  
-            </div>
-          
+            </div> 
+
           {% else %}
             {{ form.username(class="form-control form-control-lg")}}
           {% endif%}                
@@ -30,7 +30,6 @@
               {% for error in form.email.errors %}
                 <span>{{ error }}</span>
               {% endfor %}  
-
             </div>
           
           {% else %}
@@ -71,7 +70,7 @@
       </fieldset>  
       <div class="form-group">
 
-      {{ form.submit(class="btn btn-outline-info") }}
+       {{ form.submit(class="btn btn-outline-info") }}
 
       </div>
 
