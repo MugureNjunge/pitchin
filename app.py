@@ -1,8 +1,8 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import (SignupForm, LoginForm)
+from forms import SignupForm, LoginForm
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '567ygh345gbn9765klm2'
+app.config['SECRET_KEY'] = '5a833362f6d90268a308cfd3b2dea7ea'
 
 posts = [
   {
@@ -39,7 +39,7 @@ def about():
 def signup():
   form = SignupForm()
   if form.validate_on_submit():
-    flash(f'Welcome {form.username.data}!','Your account has been successfully created. Add your own post now!')
+    flash(f'Account creation for {form.username.data}!','success')
     return redirect(url_for('home'))
   return render_template("signup.html", title = 'Signup', form=form)   
 
