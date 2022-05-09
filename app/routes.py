@@ -1,8 +1,8 @@
 from flask import render_template, url_for, flash, redirect
-from app import app
+from app import app, db 
 from app.forms import SignupForm, LoginForm
 from app.models import User, Post
-
+from flask_login import login_user, current_user,logout_user, login_required
 
 posts = [
   {
@@ -37,20 +37,40 @@ def about():
 
 @app.route("/signup",methods=['GET', 'POST'] )
 def signup():
+  if current_user.is_authenticated:
+    return redirect(url_for('home'))
   form = SignupForm()
   if form.validate_on_submit():
-    flash(f'Account created for {form.username.data}!','success')
-    return redirect(url_for('home'))
+    
+    user = User(username=form.username.data, email=form.email.data, password=form.password.data)
+
+    flash('Account created!You can now log in!','success')
+    return redirect(url_for('login'))
   return render_template("signup.html", title = 'Signup', form=form)   
 
 @app.route("/login",methods=['GET', 'POST'] )
 def login():
+  if current_user.is_authenticated:
+    return redirect(url_for('home'))
+
   form = LoginForm()
   if form.validate_on_submit():
-    if form.email.data == 'admin@g.com' and form.password.data == 'password':
-      flash('You have been logged in!', 'success')
-      return redirect(url_for('home'))
-    else:
-      flash('Login unsuccessful.PLease check your email and password', 'danger')
+    user = User.query.filter_by(email=form.email.data).first()
+    user = User.query.filter_by(password=form.password.data).first()
+    login_user(user, remember=form.remember.data)
 
-  return render_template("login.html", title = 'Login', form=form)   
+    return redirect(url_for('home'))
+
+  else: 
+    flash('Login unsuccessful.Please check your email and password', 'danger')
+    return render_template("login.html", title = 'Login', form=form) 
+
+@app.route("/logout")
+def logout():
+  logout_user()
+  return redirect(url_for('home'))
+  
+@app.route("/account")
+@login_required
+def account():
+  return render_template("account.html", title = 'Account')
