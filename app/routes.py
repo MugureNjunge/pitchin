@@ -1,34 +1,12 @@
 from flask import render_template, url_for, flash, redirect
 from app import app, db 
-from app.forms import SignupForm, LoginForm
+from app.forms import SignupForm, LoginForm, PostForm
 from app.models import User, Post
 from flask_login import login_user, current_user,logout_user, login_required
 
-posts = [
-  {
-    'title' :'Interview Pitch',
-    'content':'Preparing for that important inteview ,gauge just how ready you are. All the very best.'
-    
-  },
-  {
-    'title' :'Business Proposal',
-    'content':'The investors you have been cozing upto are a pitch away.'
-    
-  },
-  {
-    'title' :'Get that groove on!',
-    'content':'Going on a date with that special someone ,well lets get you date ready.'
-    
-  },
-  {
-    'title' :'Just for fun pitch!',
-    'content':'Wamma learn how to make a great pitch in under 60 seconds?Start now and thank me later.'
-
-  }
-]
-
 @app.route("/")
 def home():
+  posts = Post.query.all()
   return render_template("home.html", posts=posts)
 
 @app.route("/about")
@@ -56,14 +34,13 @@ def login():
   form = LoginForm()
   if form.validate_on_submit():
     user = User.query.filter_by(email=form.email.data).first()
-    user = User.query.filter_by(password=form.password.data).first()
+    user == User.query.filter_by(password=form.password.data).first()
     login_user(user, remember=form.remember.data)
+    return redirect(url_for('account'))
 
-    return redirect(url_for('home'))
-
-  else: 
-    flash('Login unsuccessful.Please check your email and password', 'danger')
-    return render_template("login.html", title = 'Login', form=form) 
+  # else: 
+  #    flash('Login unsuccessful.Please check your email and password', 'danger')
+  return render_template("login.html", title = 'Login', form=form) 
 
 @app.route("/logout")
 def logout():
@@ -74,3 +51,16 @@ def logout():
 @login_required
 def account():
   return render_template("account.html", title = 'Account')
+
+@app.route("/post/new", methods=['GET', 'POST'] )
+@login_required
+def new_post():
+  form = PostForm()
+  if form.validate_on_submit():
+    post = Post(title=form.title.data, content=form.content.data, author=current_user)
+    db.session.add(post)
+    db.session.commit()
+    flash('Your pitch has been created!', 'success')
+    return redirect(url_for('home'))
+  return render_template("create_post.html", title='New Post')
+  
