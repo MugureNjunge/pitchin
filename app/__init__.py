@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 
+# initialize extentions
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5a833362f6d90268a308cfd3b2dea7ea'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
