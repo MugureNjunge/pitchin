@@ -2,9 +2,9 @@
 
 **Description**
 
-Pitch It is a web application that allows users to add a 60 seconds long pitch. The users will submit their pitches and other users get to vote on them and leave their comments.
+Pitchin is a web application that allows users to add a 60 seconds long pitch. The users will submit their pitches and other users get to vote on them and leave their comments.
 
-The pitches are organized by category. It has categories like: General Pitches,Career Pitches, and Fun Pitches Whatever comes to your mind, Just Pitch it!
+The pitches are organized by category. It has categories like: General Pitches,Business Pitches and Fun Pitches Whatever comes to your mind, Just Pitch it!
 
 **Live link:**
 
