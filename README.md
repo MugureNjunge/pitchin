@@ -20,7 +20,7 @@ cd pitchin
 Then open your code editor i.e:
 code .
 
-Remember to download all the requirements started in the requiremen.txt, open your terminal and the app in your code editor and finally run the app.
+Remember to download all the requirements stated in the requiremen.txt, open your terminal and the app in your code editor and finally run the app.
 
 **Known Bugs**
 
@@ -35,11 +35,14 @@ Submit a pitch to a specific category of their choice.
 See the pitches posted by other uses.
 View pitches from the three different categories.
     
-**BDD**
+**Process**
 
-1)Load the page ,user can either signup or login
-2)When signing up you will input your	Email,Username,Password and Confirm your password. You will get redirected to the login page.
-3)For returning users,Login with your email and password and instantly redirected to the home page with pitches.
+1)Load the page ,user can either signup or login.
+
+2)When signing up you will input your :Email,Username,Password and Confirm your password. You will get redirected to the login page.
+
+3)For returning users,Login with your email and password and get redirected to the home page with pitches.
+
 4)Choose a category pitch then add the contents of the pitch and post.
 
 **Technologies Used**
@@ -54,5 +57,6 @@ Incase of any question or contributions, you can contact me through: maureen.nju
 
 **License**
 
-**MIT License**
-Copyright (c)2022 Pitch it. All rights reserved.
+MIT License
+
+**Copyright (c)2022 Pitch in. All rights reserved.**
