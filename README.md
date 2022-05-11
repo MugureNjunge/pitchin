@@ -7,6 +7,7 @@ Pitchin is a web application that allows users to add a 60 seconds long pitch. T
 The pitches are organized by category. It has categories like: General Pitches,Business Pitches and Fun Pitches Whatever comes to your mind, Just Pitch it!
 
 **Live link:**
+https://pitchtime.herokuapp.com/
 
 **Setup Procedure**
 
